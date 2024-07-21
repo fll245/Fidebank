@@ -14,20 +14,12 @@ public class Fidebank {
         cajero.registrarCliente(cliente1);
         cajero.registrarCliente(cliente2);
 
-        try {
-            // Autenticación del cliente
-            Cliente clienteAutenticado = cajero.autenticarCliente("12345678A", "1234");
-
-            // Realización de transacciones
-            clienteAutenticado.getCuenta().depositar(200.0);
-            clienteAutenticado.getCuenta().retirar(150.0);
-            clienteAutenticado.getCuenta().transferir(cuenta2, 300.0);
-
-            // Impresión de comprobante
-            cajero.imprimirComprobante(clienteAutenticado);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        // Iniciar la interfaz gráfica
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                ATMFrame frame = new ATMFrame(cajero);
+                frame.setVisible(true);
+            }
+        });
     }
 }

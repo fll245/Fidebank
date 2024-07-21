@@ -16,7 +16,7 @@ public class LoginPanel extends JPanel {
 
     public LoginPanel(ATMFrame parent) {
         this.parent = parent;
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridLayout(4, 2));
 
         add(new JLabel("Digite su cédula:"));
         cedulaField = new JTextField();
@@ -41,5 +41,14 @@ public class LoginPanel extends JPanel {
             }
         });
         add(loginButton);
+
+        JButton createAccountButton = new JButton("Crear cuenta nueva");
+        createAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parent.showPanel("AccountCreation");
+            }
+        });
+        add(createAccountButton);
     }
 }

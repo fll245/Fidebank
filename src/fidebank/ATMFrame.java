@@ -17,12 +17,14 @@ public class ATMFrame extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
+        // Añadir los paneles al mainPanel
         mainPanel.add(new LoginPanel(this), "Login");
         mainPanel.add(new TransactionPanel(this), "Transaction");
+        mainPanel.add(new AccountCreationPanel(this), "AccountCreation");
 
         add(mainPanel);
         setTitle("FideBank ATM");
-        setSize(400, 300);
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
@@ -36,9 +38,9 @@ public class ATMFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+        // Inicializa el cajero automático con algunos datos de prueba
         CajeroAutomatico cajero = new CajeroAutomatico();
         ATMFrame frame = new ATMFrame(cajero);
         frame.setVisible(true);
     }
 }
-
